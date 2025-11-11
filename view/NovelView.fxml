@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.NovelController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <VBox spacing="10" alignment="CENTER" layoutX="20" layoutY="20" prefWidth="560">
+            <HBox spacing="10">
+                <Label text="Judul:"/>
+                <TextField fx:id="tfJudul" prefWidth="400"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Penulis:"/>
+                <TextField fx:id="tfPenulis" prefWidth="400"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Tanggal Terbit:"/>
+                <TextField fx:id="tfTanggalTerbit" prefWidth="400"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Tambah" fx:id="btnTambah" onAction="#tambahData"/>
+                <Button text="Edit" fx:id="btnEdit" onAction="#editData"/>
+                <Button text="Hapus" fx:id="btnHapus" onAction="#hapusData"/>
+            </HBox>
+            <TableView fx:id="tableNovel" prefHeight="200" prefWidth="560">
+                <columns>
+                    <TableColumn fx:id="colJudul" text="Judul" prefWidth="180"/>
+                    <TableColumn fx:id="colPenulis" text="Penulis" prefWidth="180"/>
+                    <TableColumn fx:id="colTanggal" text="Tanggal Terbit" prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>
