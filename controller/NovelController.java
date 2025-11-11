@@ -10,7 +10,10 @@ import model.Novel;
 public class NovelController {
 
     @FXML
-    private TextField tfJudul, tfPenulis, tfTanggalTerbit;
+    private TextField tfJudul, tfPenulis;
+
+    @FXML
+    private DatePicker dpTanggalTerbit;
 
     @FXML
     private TableView<Novel> tableNovel;
@@ -36,7 +39,7 @@ public class NovelController {
             if (novel != null) {
                 tfJudul.setText(novel.getJudul());
                 tfPenulis.setText(novel.getPenulis());
-                tfTanggalTerbit.setText(novel.getTanggalTerbit());
+                dpTanggalTerbit.setValue(java.time.LocalDate.parse(novel.getTanggalTerbit()));
             }
         });
     }
@@ -45,7 +48,7 @@ public class NovelController {
     private void tambahData() {
         String judul = tfJudul.getText();
         String penulis = tfPenulis.getText();
-        String tanggal = tfTanggalTerbit.getText();
+        String tanggal = (dpTanggalTerbit.getValue() != null) ? dpTanggalTerbit.getValue().toString() : "";
 
         if (!judul.isEmpty() && !penulis.isEmpty() && !tanggal.isEmpty()) {
             daftarNovel.add(new Novel(judul, penulis, tanggal));
@@ -61,7 +64,9 @@ public class NovelController {
         if (selected != null) {
             selected.setJudul(tfJudul.getText());
             selected.setPenulis(tfPenulis.getText());
-            selected.setTanggalTerbit(tfTanggalTerbit.getText());
+            if (dpTanggalTerbit.getValue() != null) {
+                selected.setTanggalTerbit(dpTanggalTerbit.getValue().toString());
+            }
             tableNovel.refresh();
             clearForm();
         } else {
@@ -83,7 +88,7 @@ public class NovelController {
     private void clearForm() {
         tfJudul.clear();
         tfPenulis.clear();
-        tfTanggalTerbit.clear();
+        dpTanggalTerbit.setValue(null);
     }
 
     private void showAlert(String pesan) {

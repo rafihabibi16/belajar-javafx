@@ -19,7 +19,7 @@
             </HBox>
             <HBox spacing="10">
                 <Label text="Tanggal Terbit:"/>
-                <TextField fx:id="tfTanggalTerbit" prefWidth="400"/>
+                <DatePicker fx:id="dpTanggalTerbit" prefWidth="400"/>
             </HBox>
             <HBox spacing="10" alignment="CENTER">
                 <Button text="Tambah" fx:id="btnTambah" onAction="#tambahData"/>
